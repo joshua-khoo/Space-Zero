@@ -1,0 +1,24 @@
+************************** System ****************************
+
+Write own physics engine
+	Planetary physics
+
+**************************** WORLD ***************************
+
+Sandbox Game
+3 Factions + 1 Pirates
+One Galaxy
+
+
+
+**************************** NPC's ***************************
+
+Procedural missions
+Conversational logic
+Neural Networks
+
+
+************************** GAMEPLAY ****************************
+
+Start in the stone age
+Destroy planets end-game (post moon lord)
