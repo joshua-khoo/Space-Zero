@@ -78,8 +78,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Spiral_Prototype.cs" />
-    <Compile Include="Assets\Scripts\Spiral_Settings.cs" />
+    <Compile Include="Assets\Images\Scripts\Boundary.cs" />
+    <Compile Include="Assets\Images\Scripts\CelestialBody.cs" />
+    <Compile Include="Assets\Images\Scripts\Moon.cs" />
+    <Compile Include="Assets\Images\Scripts\Planet.cs" />
+    <Compile Include="Assets\Images\Scripts\SolarSystem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
