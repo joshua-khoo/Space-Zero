@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SolarSystem : MonoBehaviour {
 
-    public int[] planets;
+    public Planet[] planets;
 
 	// Use this for initialization
 	void Start () {

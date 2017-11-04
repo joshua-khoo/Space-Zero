@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moon : CelestialBody {
+public class Moon : Planet {
 
 	// Use this for initialization
 	void Start () {

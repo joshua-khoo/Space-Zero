@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour {
 
-    public enum ChunkType { Empty, SolarSystem};
+    public enum ChunkType { Empty, SolarSystem };
 
     public ChunkType chunkType;
 
