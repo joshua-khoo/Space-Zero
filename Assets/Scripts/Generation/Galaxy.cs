@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Galaxy : MonoBehaviour {
 
@@ -11,8 +12,14 @@ public class Galaxy : MonoBehaviour {
     const int size = 100;
     const int chunkSize = 5;
 
+    public int seed;
+
+    System.Random random;
+
 	// Use this for initialization
 	void Start () {
+        seed = 1;
+        random = new System.Random(seed);
         Generate();
 
     }
@@ -35,19 +42,20 @@ public class Galaxy : MonoBehaviour {
                     Quaternion.identity);
 
                 chunks[x, y].chunkType = Chunk.ChunkType.Empty;
+                chunks[x, y].seed = random.Next(1000000000);
 
-                
+
             }
         }
 
         for (float offset = 0; offset < 2*Mathf.PI; offset += Mathf.PI / 2)
         {
 
-            int rad = 0;
+            float rad = 0;
 
             bool end = false;
 
-            for (float r = offset; !end; r += 0.2f)
+            for (float r = offset; !end; r += 0.1f)
             {
 
 
@@ -62,7 +70,7 @@ public class Galaxy : MonoBehaviour {
                 {
                     end = true;
                 }
-                rad++;
+                rad+=0.5f;
 
 
             }

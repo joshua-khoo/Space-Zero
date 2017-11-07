@@ -10,6 +10,8 @@ public class Chunk : MonoBehaviour {
 
     SpriteRenderer spr;
 
+    public int seed;
+
 	// Use this for initialization
 	void Start () {
         spr = GetComponent<SpriteRenderer>();
