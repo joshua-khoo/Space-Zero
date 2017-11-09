@@ -12,8 +12,14 @@ public class Chunk : MonoBehaviour {
 
     public int seed;
 
+    public enum ChunkLoadType { none, semi, full};
+    public ChunkLoadType chunkLoadType;
+
 	// Use this for initialization
 	void Start () {
+
+        chunkLoadType = ChunkLoadType.none;
+
         spr = GetComponent<SpriteRenderer>();
         if (chunkType == ChunkType.Empty)
         {
@@ -25,4 +31,23 @@ public class Chunk : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void FullLoad()
+    {
+
+    }
+    public void SemiLoad()
+    {
+
+    }
+
+    public void SemiUnload()
+    {
+
+    }
+
+    public void Unload()
+    {
+
+    }
 }

@@ -9,8 +9,8 @@ public class Galaxy : MonoBehaviour {
 
     public Chunk chunkPrefab;
 
-    const int size = 100;
-    const int chunkSize = 5;
+    public const int size = 100;
+    public const int chunkSize = 5;
 
     public int seed;
 
@@ -41,10 +41,12 @@ public class Galaxy : MonoBehaviour {
                     new Vector3((x * chunkSize) - (size * chunkSize / 2), y * chunkSize - (size * chunkSize / 2), 0),
                     Quaternion.identity);
 
+                chunks[x, y].transform.SetParent(transform);
+
                 chunks[x, y].chunkType = Chunk.ChunkType.Empty;
                 chunks[x, y].seed = random.Next(1000000000);
 
-
+                
             }
         }
 
