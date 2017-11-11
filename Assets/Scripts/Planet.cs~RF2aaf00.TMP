@@ -1,0 +1,39 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+using Random = System.Random;
+
+
+public class Planet : MonoBehaviour {
+
+    private Random globalRandom;
+
+    private GameObject[,] _resource;
+    private GameObject[,] _building;
+
+    public int randomSeed;
+    public float oxygenLevel;   // out of 100
+
+    public Planet() {
+        randomSeed = 0;
+        oxygenLevel = 100;
+    }
+
+    public Planet(int seed, int oxygen) {
+        randomSeed = seed;
+        oxygenLevel = oxygen;
+    }
+
+    private void Generate() {
+        
+    }
+
+    void InstallResources() {
+
+        resourcesList = new List<Resources>();
+
+        // @PARAM: STRING TYPE, FLOAT FREQUENCY, FLOAT AMOUNT
+        resourcesList.add(new Resource("Wood", 1f, 1f));
+    }
+}
