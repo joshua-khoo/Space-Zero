@@ -48,8 +48,6 @@ public class Galaxy : MonoBehaviour {
 
                 chunks[x, y].chunkType = Chunk.ChunkType.Empty;
                 chunks[x, y].seed = random.Next(int.MinValue, int.MaxValue);
-
-                
             }
         }
 
@@ -76,13 +74,7 @@ public class Galaxy : MonoBehaviour {
                     end = true;
                 }
                 rad+=0.5f;
-
-
             }
         }
-        
-
-
-
     }
 }
