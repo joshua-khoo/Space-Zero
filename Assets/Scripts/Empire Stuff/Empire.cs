@@ -9,13 +9,24 @@ public class Empire : MonoBehaviour {
 
     List<Planet> ownedPlanets = new List<Planet>();
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public long money;
+
+    public Color empireColor;
+    public string empireName;
+
+
+    public void SetUp(Color color, string name)
+    {
+        empireColor = color;
+        empireName = name;
+        money = 10000000000000000;
+
+    }
+
+    public virtual void SetUp()
+    {
+        SetUp(Color.black, "none");
+    }
+
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

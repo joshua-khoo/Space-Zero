@@ -10,18 +10,21 @@ public class Galaxy : MonoBehaviour {
     public Chunk chunkPrefab;
 
     public const int size = 100;
-    public const int chunkSize = 5;
+    public const int chunkSize = 50;
 
     public int seed;
 
     System.Random random;
 
+    public bool hasGenerated = false;
+
 	// Use this for initialization
 	void Start () {
+        hasGenerated = false;
         seed = 1;
         random = new System.Random(seed);
         Generate();
-
+        hasGenerated = true;
     }
 	
 	// Update is called once per frame
@@ -44,7 +47,7 @@ public class Galaxy : MonoBehaviour {
                 chunks[x, y].transform.SetParent(transform);
 
                 chunks[x, y].chunkType = Chunk.ChunkType.Empty;
-                chunks[x, y].seed = random.Next(1000000000);
+                chunks[x, y].seed = random.Next(int.MinValue, int.MaxValue);
 
                 
             }
