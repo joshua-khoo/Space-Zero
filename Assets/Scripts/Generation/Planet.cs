@@ -45,34 +45,12 @@ public class Planet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        updateBuilding();
+        updateResources();
 	}
 
     void Generate() {
         InstallResources();
-
-        for (int x = 0; x < size; x++) {
-
-            for (int y = 0; y < size; y++) {
-
-                // if distance from point (x,y) to center is less than the radius
-                if (Math.Sqrt(Math.Pow(x - centerX, 2) + Math.Pow(y - centerY, 2)) < radius) {
-                    
-                    // traverse resources list
-                    // and choose to add it to that block
-                    // based on the frequency
-                    for (int i = 0; i < resourcesList.Count; i++) {
-                        int gen = random.Next(1, 100);
-                        if (gen <= resourcesList[i].frequency) {
-                            Instantiate(resourcesList[i].resourceType, new Vector3(x, y, 0), Quaternion.identity);                      
-                        }
-
-                    }
-
-                }
-            }
-
-        }
     }
 
     void InstallResources() {
@@ -83,6 +61,37 @@ public class Planet : MonoBehaviour {
         // @PARAM: INT FREQUENCY FROM 0 TO 100
 
         // hard coded in, randomize later
-        resourcesList.Add(new Resource(1, 50));
+        resourcesList.Add(gameObject.AddComponent<Resource>());
+
+         
+        // Add resourced to planet
+
+        for (int x = 0; x < size; x++) {
+
+            for (int y = 0; y < size; y++) {
+
+                // if distance from point (x,y) to center is less than the radius
+                if (Math.Sqrt(Math.Pow(x - centerX, 2) + Math.Pow(y - centerY, 2)) < radius) 
+
+                    // traverse resources list
+                    // and choose to add it to that block
+                    // based on the frequency
+                    for (int i = 0; i < resourcesList.Count; i++) {
+                        Instantiate(resourcesList[i].resourceType, new Vector3(x, y, 0), Quaternion.identity);
+                        
+                    }
+
+                
+            }
+
+        }
+    }
+
+    void updateResources() {
+
+    }
+
+    void updateBuilding() {
+
     }
 }
