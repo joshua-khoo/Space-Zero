@@ -61,7 +61,7 @@ public class Planet : MonoBehaviour {
         // @PARAM: INT FREQUENCY FROM 0 TO 100
 
         // hard coded in, randomize later
-        resourcesList.Add(gameObject.AddComponent<Resource>());
+        resourcesList.Add(new Resource(5,50));
 
          
         // Add resourced to planet

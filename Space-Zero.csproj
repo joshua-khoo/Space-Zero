@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Generation\PlanetGeneration.cs" />
     <Compile Include="Assets\Scripts\Generation\Resources\Iron.cs" />
     <Compile Include="Assets\Scripts\Generation\Resources\Resource.cs" />
+    <Compile Include="Assets\Scripts\Generation\Resources\ResourceGeneration.cs" />
     <Compile Include="Assets\Scripts\Generation\Resources\Wood.cs" />
     <Compile Include="Assets\Scripts\Generation\SolarSystem.cs" />
     <Compile Include="Assets\Scripts\Physics\BasicObject.cs" />
