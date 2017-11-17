@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Generation\Chunk\Chunk.cs" />
     <Compile Include="Assets\Scripts\Generation\Chunk\ChunkLoader.cs" />
     <Compile Include="Assets\Scripts\Generation\Galaxy.cs" />
+    <Compile Include="Assets\Scripts\Generation\Item.cs" />
     <Compile Include="Assets\Scripts\Generation\Moon.cs" />
     <Compile Include="Assets\Scripts\Generation\Planet.cs" />
     <Compile Include="Assets\Scripts\Generation\PlanetGeneration.cs" />
@@ -100,6 +101,9 @@
     <Compile Include="Assets\Scripts\Physics\PhysicsShape.cs" />
     <Compile Include="Assets\Scripts\Physics\PysicsLine.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\ResourceGathering.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
