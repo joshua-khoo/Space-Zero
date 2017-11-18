@@ -18,6 +18,6 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
     void Movement(float horizontal, float vertical) {
-        Player.Instance.rb2d.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        transform.position = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
     }
 }
