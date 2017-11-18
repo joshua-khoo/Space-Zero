@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Planet : MonoBehaviour {
+public class Planet {
 
     System.Random random;
 
     private static Planet instance;
 
     public int seed;
+
+    public Sprite planetSprite;
+    public Color planetColor;
 
     public int size;        // size overlay for resources and buildings
     public int radius;      // radius of planet
@@ -23,28 +26,34 @@ public class Planet : MonoBehaviour {
 
     SpriteRenderer spr;
 
-    public static Planet Instance {
-        get {
-            if (instance == null)
-                instance = FindObjectOfType<Planet>();
-            return instance;
-        }
+    ItemHolder itemHolder;
+
+    
+
+
+    public Planet(int seed, ItemHolder itemHolder)
+    {
+        this.seed = seed;
+        this.itemHolder = itemHolder;
+
+        Start();
     }
 
 	// Use this for initialization
 	void Start () {
+        
         random = new System.Random(seed);
 
         int size = random.Next(50, 100);
 
         radius = size / 2;
-        seed = 1;
+        
         
         Generate();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
         updateBuilding();
         updateResources();
 	}
@@ -63,28 +72,17 @@ public class Planet : MonoBehaviour {
         // hard coded in, randomize later
         //resourcesList.Add(new Resource(5));
 
-         
+
         // Add resourced to planet
+        int rAmount = random.Next(10) + 5;
 
-        for (int x = 0; x < size; x++) {
 
-            for (int y = 0; y < size; y++) {
-
-                // if distance from point (x,y) to center is less than the radius
-                if (Math.Sqrt(Math.Pow(x - centerX, 2) + Math.Pow(y - centerY, 2)) < radius) 
-
-                    // traverse resources list
-                    // and choose to add it to that block
-                    // based on the frequency
-                    for (int i = 0; i < resourcesList.Count; i++) {
-                        //Instantiate(resourcesList[i].resourceType, new Vector3(x, y, 0), Quaternion.identity);
-                        
-                    }
-
-                
-            }
+        for (int i = 0; i < rAmount; i++)
+        {
 
         }
+        
+        
     }
 
     void updateResources() {

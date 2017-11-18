@@ -7,7 +7,8 @@ public class Resource {
     public Item item;
     public int amount;
 
-    
+    //local to planet
+    public Vector2 position;
 
     public Resource(int amount, Item item) {
         
