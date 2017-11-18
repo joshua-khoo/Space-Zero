@@ -15,8 +15,18 @@ public class Chunk : MonoBehaviour {
     public enum ChunkLoadType { none, semi, full};
     public ChunkLoadType chunkLoadType;
 
+    public SolarSystem solarSystemPrefab;
+    SolarSystem solarSystem;
 	// Use this for initialization
 	void Start () {
+
+        solarSystem = Instantiate(solarSystemPrefab);
+
+        solarSystem.radius = Galaxy.chunkSize / 2;
+
+        solarSystem.position = transform.position;
+        solarSystem.transform.SetParent(transform);
+
 
         chunkLoadType = ChunkLoadType.none;
 
@@ -34,7 +44,7 @@ public class Chunk : MonoBehaviour {
 
     public void FullLoad()
     {
-
+        solarSystem.FullLoad();
     }
     public void SemiLoad()
     {

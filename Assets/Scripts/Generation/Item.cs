@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item {
+public class Item : MonoBehaviour{
 
-    public string name;
+    public string itemName;
     public Sprite sprite;
     public Color color;
+
+    
+
+    
 }

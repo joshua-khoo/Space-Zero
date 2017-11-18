@@ -6,8 +6,8 @@ using UnityEngine;
 public class Planet {
 
     System.Random random;
-
-    private static Planet instance;
+    public const int MAX_PLANET_SIZE = 100;
+    int minSize;
 
     public int seed;
 
@@ -16,26 +16,33 @@ public class Planet {
 
     public int size;        // size overlay for resources and buildings
     public int radius;      // radius of planet
-    public int centerX;     // x coordinate of planet center
-    public int centerY;     // y coordinate of planet center
+    public Vector2 position;
 
+    public const int spacing = 5;
     public Resource[,] resources;
     public Building[,] buildings;
 
     private List<Resource> resourcesList;
 
-    SpriteRenderer spr;
+    
 
     ItemHolder itemHolder;
 
-    
+    public PlanetImage planetImage;
 
 
-    public Planet(int seed, ItemHolder itemHolder)
+    public Planet(int seed, ItemHolder itemHolder, bool isMoon)
     {
         this.seed = seed;
         this.itemHolder = itemHolder;
-
+        if (isMoon)
+        {
+            minSize = 25;
+        }
+        else
+        {
+            minSize = 50;
+        }
         Start();
     }
 
@@ -44,11 +51,13 @@ public class Planet {
         
         random = new System.Random(seed);
 
-        int size = random.Next(50, 100);
+        int size = random.Next(minSize, MAX_PLANET_SIZE);
 
         radius = size / 2;
-        
-        
+
+        resources = new Resource[size, size];
+
+
         Generate();
 	}
 	
@@ -57,6 +66,11 @@ public class Planet {
         updateBuilding();
         updateResources();
 	}
+
+    public void Load()
+    {
+
+    }
 
     void Generate() {
         InstallResources();
@@ -74,15 +88,57 @@ public class Planet {
 
 
         // Add resourced to planet
-        int rAmount = random.Next(10) + 5;
+        CreateResources();
+        SetResourceLocations();
 
 
-        for (int i = 0; i < rAmount; i++)
+    }
+
+    //for resources
+    Vector2 GetRandomSpot()
+    {
+        bool isDone = false;
+
+        Vector2 pos = new Vector2(-1, -1);
+
+        while (!isDone)
         {
+            int x = random.Next(size);
+            int y = random.Next(size);
+            if (resources[x, y] == null)
+            {
+                pos = new Vector2(x, y);
+                isDone = true;
+            }
+
 
         }
         
-        
+
+        return pos;
+    }
+
+    void SetResourceLocations()
+    {
+        for (int i = 0; i < resourcesList.Count; i++)
+        {
+            Vector2 pos = GetRandomSpot();
+
+            resourcesList[i].position = pos;
+        }
+    }
+
+    void CreateResources()
+    {
+        int rTotal = random.Next(10) + 5;
+
+
+        for (int i = 0; i < rTotal; i++)
+        {
+            Item item = itemHolder.GetItem("Iron Ore");
+
+            resourcesList.Add(new Resource(5, item));
+        }
     }
 
     void updateResources() {

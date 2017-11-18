@@ -17,28 +17,36 @@ public class PlanetImage : MonoBehaviour {
         spr.sprite = planet.planetSprite;
         spr.color = planet.planetColor;
 
+
+        SpawnResourceSpots();
+
+
+        
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    void SpawnResourceSpots()
+    {
         for (int x = 0; x < planet.resources.GetLength(0); x++)
         {
             for (int y = 0; y < planet.resources.GetLength(1); y++)
             {
                 if (planet.resources[x, y] != null)
                 {
-                    ResourceSpot newRSpot = Instantiate(resourceSpotPrefab);
+                    ResourceSpot newRSpot = Instantiate(resourceSpotPrefab,
+                        new Vector3((x * Planet.spacing) + planet.position.x, (y * Planet.spacing) + planet.position.y, 0),
+                        Quaternion.identity);
 
                     newRSpot.resource = planet.resources[x, y];
 
                     newRSpot.planet = planet;
-
+                    rSpots.Add(newRSpot);
                 }
             }
         }
-
-
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 }

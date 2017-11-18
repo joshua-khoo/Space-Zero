@@ -9,8 +9,8 @@ public class Galaxy : MonoBehaviour {
 
     public Chunk chunkPrefab;
 
-    public const int size = 100;
-    public const int chunkSize = 50;
+    public const int size = 10;
+    public const int chunkSize = 1000;
 
     public int seed;
 
