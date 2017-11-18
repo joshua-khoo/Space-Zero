@@ -10,13 +10,16 @@ public class PlanetImage : MonoBehaviour {
 
     private List<ResourceSpot> rSpots = new List<ResourceSpot>();
 
+    
+
     // Use this for initialization
     void Start () {
         SpriteRenderer spr = GetComponent<SpriteRenderer>();
 
-        spr.sprite = planet.planetSprite;
+        
         spr.color = planet.planetColor;
 
+        transform.localScale = new Vector3(planet.radius, planet.radius, planet.radius);
 
         SpawnResourceSpots();
 

@@ -27,7 +27,7 @@ public class SolarSystem : MonoBehaviour {
 
         itemHolder = FindObjectOfType<ItemHolder>();
 
-        random = new System.Random();
+        random = new System.Random(seed);
         
         Generate();
 	}
@@ -67,7 +67,10 @@ public class SolarSystem : MonoBehaviour {
             
             for (int i = 0; i < planets.Count; i++)
             {
-                PlanetImage newPlanetImage = Instantiate(planetImagePrefab);
+
+                Vector2 pos = position + planets[i].position;
+
+                PlanetImage newPlanetImage = Instantiate(planetImagePrefab, pos, Quaternion.identity);
                 newPlanetImage.planet = planets[i];
                 planets[i].planetImage = newPlanetImage;
                 

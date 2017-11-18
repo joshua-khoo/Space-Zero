@@ -26,7 +26,7 @@ public class Chunk : MonoBehaviour {
 
         solarSystem.position = transform.position;
         solarSystem.transform.SetParent(transform);
-
+        solarSystem.seed = seed;
 
         chunkLoadType = ChunkLoadType.none;
 

@@ -11,7 +11,7 @@ public class Planet {
 
     public int seed;
 
-    public Sprite planetSprite;
+    //public Sprite planetSprite;
     public Color planetColor;
 
     public int size;        // size overlay for resources and buildings
@@ -55,7 +55,7 @@ public class Planet {
 
         radius = size / 2;
 
-        resources = new Resource[size, size];
+        resources = new Resource[size / spacing, size / spacing];
 
 
         Generate();
@@ -73,7 +73,17 @@ public class Planet {
     }
 
     void Generate() {
+        RandomColor();
         InstallResources();
+    }
+
+    void RandomColor()
+    {
+        double r = random.NextDouble();
+        double g = random.NextDouble();
+        double b = random.NextDouble();
+
+        planetColor = new Color((float)r, (float)g, (float)b);
     }
 
     void InstallResources() {
