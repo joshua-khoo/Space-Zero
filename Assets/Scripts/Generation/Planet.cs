@@ -113,8 +113,8 @@ public class Planet {
 
         while (!isDone)
         {
-            int x = random.Next(size);
-            int y = random.Next(size);
+            int x = random.Next(resources.GetLength(0));
+            int y = random.Next(resources.GetLength(1));
             if (resources[x, y] == null)
             {
                 pos = new Vector2(x, y);
@@ -132,9 +132,13 @@ public class Planet {
     {
         for (int i = 0; i < resourcesList.Count; i++)
         {
+
             Vector2 pos = GetRandomSpot();
 
             resourcesList[i].position = pos;
+
+            resources[(int)pos.x, (int)pos.y] = resourcesList[i];
+
         }
     }
 

@@ -13,6 +13,8 @@ public class ResourceSpot : MonoBehaviour {
         SpriteRenderer spr = GetComponent<SpriteRenderer>();
         spr.sprite = resource.item.sprite;
         spr.color = resource.item.color;
+
+        
 	}
 	
 	// Update is called once per frame

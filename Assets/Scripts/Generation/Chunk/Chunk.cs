@@ -19,14 +19,17 @@ public class Chunk : MonoBehaviour {
     SolarSystem solarSystem;
 	// Use this for initialization
 	void Start () {
+        if (chunkType == ChunkType.SolarSystem)
+        {
+            solarSystem = Instantiate(solarSystemPrefab);
 
-        solarSystem = Instantiate(solarSystemPrefab);
+            solarSystem.radius = Galaxy.chunkSize / 2;
 
-        solarSystem.radius = Galaxy.chunkSize / 2;
-
-        solarSystem.position = transform.position;
-        solarSystem.transform.SetParent(transform);
-        solarSystem.seed = seed;
+            solarSystem.position = transform.position;
+            solarSystem.transform.SetParent(transform);
+            solarSystem.seed = seed;
+        }
+        
 
         chunkLoadType = ChunkLoadType.none;
 
