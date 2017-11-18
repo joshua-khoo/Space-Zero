@@ -11,7 +11,7 @@ public class PlayerInventory : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         money = 0;
-        capacity = Player.strength * 100;
+        capacity = Player.Instance.strength;
 	}
 	
 	// Update is called once per frame
