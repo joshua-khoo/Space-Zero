@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Resource {
 
-    public Resource resourceType;
-    public int frequency;
+    public Item item;
     public int amount;
 
-    public Resource(int amount, int frequency) {
-        this.frequency = frequency;
+    
+
+    public Resource(int amount, Item item) {
+        
         this.amount = amount;
+        this.item = item;
     }
 
 }

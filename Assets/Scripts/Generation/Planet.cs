@@ -26,7 +26,7 @@ public class Planet : MonoBehaviour {
     public static Planet Instance {
         get {
             if (instance == null)
-                instance = GameObject.FindObjectOfType<Planet>();
+                instance = FindObjectOfType<Planet>();
             return instance;
         }
     }
@@ -61,7 +61,7 @@ public class Planet : MonoBehaviour {
         // @PARAM: INT FREQUENCY FROM 0 TO 100
 
         // hard coded in, randomize later
-        resourcesList.Add(new Resource(5,50));
+        //resourcesList.Add(new Resource(5));
 
          
         // Add resourced to planet
@@ -77,7 +77,7 @@ public class Planet : MonoBehaviour {
                     // and choose to add it to that block
                     // based on the frequency
                     for (int i = 0; i < resourcesList.Count; i++) {
-                        Instantiate(resourcesList[i].resourceType, new Vector3(x, y, 0), Quaternion.identity);
+                        //Instantiate(resourcesList[i].resourceType, new Vector3(x, y, 0), Quaternion.identity);
                         
                     }
 
