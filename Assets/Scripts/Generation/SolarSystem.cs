@@ -54,8 +54,8 @@ public class SolarSystem : MonoBehaviour {
     //NOTE: Need to check if planets are intersecting
     Vector2 GetNewPlanetPosition(Planet planet)
     {
-        Vector2 rPos = new Vector2(random.Next(-radius + planet.radius, radius - planet.radius),
-            random.Next(-radius + planet.radius, radius - planet.radius));
+        Vector2 rPos = new Vector2(random.Next(-(int)radius + (int)planet.radius, (int)radius - (int)planet.radius),
+            random.Next(-(int)radius + (int)planet.radius, (int)radius - (int)planet.radius));
 
         return rPos + position;
     }
@@ -68,7 +68,7 @@ public class SolarSystem : MonoBehaviour {
             for (int i = 0; i < planets.Count; i++)
             {
 
-                Vector2 pos = position + planets[i].position;
+                Vector2 pos = position + planets[i].position - new Vector2(planets[i].radius / 2, planets[i].radius / 2);
 
                 PlanetImage newPlanetImage = Instantiate(planetImagePrefab, pos, Quaternion.identity);
                 newPlanetImage.planet = planets[i];

@@ -15,7 +15,7 @@ public class Planet {
     public Color planetColor;
 
     public int size;        // size overlay for resources and buildings
-    public int radius;      // radius of planet
+    public float radius;      // radius of planet
     public Vector2 position;
 
     public const int spacing = 5;
@@ -53,9 +53,9 @@ public class Planet {
 
         int size = random.Next(minSize, MAX_PLANET_SIZE);
 
-        radius = size / 2;
+        radius = size / 2.0f;
 
-        resources = new Resource[size / spacing, size / spacing];
+        resources = new Resource[Mathf.RoundToInt(radius / spacing), Mathf.RoundToInt(radius / spacing)];
 
 
         Generate();
@@ -115,12 +115,39 @@ public class Planet {
         {
             int x = random.Next(resources.GetLength(0));
             int y = random.Next(resources.GetLength(1));
-            if (resources[x, y] == null)
+
+            float hyp = Mathf.Sqrt(Mathf.Pow((x * spacing) - radius / 2, 2) + Mathf.Pow((y * spacing) - radius / 2, 2));
+            
+            if (resources[x, y] == null && hyp < radius * .4)
             {
+
                 pos = new Vector2(x, y);
+
                 isDone = true;
             }
-
+            
+            /*
+            if (resources[x, y] == null)
+            {
+                
+                
+                if (hyp < radius * .4)
+                {
+                    pos = new Vector2(x, y);
+                    isDone = true;
+                }
+                else
+                {
+                    pos = new Vector2(0, 0);
+                    if (random.NextDouble() < 0.1f)
+                    {
+                        isDone = true;
+                    }
+                }
+                
+                
+            }
+            */
 
         }
         
@@ -144,8 +171,8 @@ public class Planet {
 
     void CreateResources()
     {
-        int rTotal = random.Next(10) + 5;
-
+        int rTotal = random.Next(5) + 5;
+        //int rTotal = resources.GetLength(0) * resources.GetLength(1);
 
         for (int i = 0; i < rTotal; i++)
         {
