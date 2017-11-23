@@ -14,8 +14,10 @@ public class EmpireC : Empire {
 		
 	}
 
-    public override void SetUp()
+    public override void SetUp(Galaxy galaxy)
     {
-        SetUp(Color.gray, "Gray Squad");
+        SetUp(Color.gray, "Gray Squad", galaxy);
+
+        SetOwnedPlanets(new Vector2(0, galaxy.chunks.GetLength(1)), Planet.PlanetOwner.EmpireC);
     }
 }

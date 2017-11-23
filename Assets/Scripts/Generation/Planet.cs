@@ -24,7 +24,8 @@ public class Planet {
 
     private List<Resource> resourcesList;
 
-    
+    public enum PlanetOwner { EmpireA, EmpireB, EmpireC, Player, None};
+    PlanetOwner planetOwner;
 
     ItemHolder itemHolder;
 
@@ -46,8 +47,15 @@ public class Planet {
     public enum ResourceType { All, None};
     public ResourceType resourceType;
 
-    public Planet(int seed, ItemHolder itemHolder, bool isMoon)
+    SolarSystem solarSystem;
+
+    public Planet(int seed, ItemHolder itemHolder, bool isMoon, SolarSystem solarSystem)
     {
+
+        planetOwner = PlanetOwner.None;
+
+        this.solarSystem = solarSystem;
+
         this.seed = seed;
         this.itemHolder = itemHolder;
         if (isMoon)
@@ -186,8 +194,8 @@ public class Planet {
         if (planetType == PlanetType.Desert)
         {
             r = 1;
-            g = GetRandomDouble(.78, .95);
-            b = GetRandomDouble(.51, .95);
+            g = .87;
+            b = GetRandomDouble(.57, 1.0);
         }
         else if (planetType == PlanetType.Forest)
         {
@@ -363,6 +371,19 @@ public class Planet {
             return 0;
         }
         
+    }
+
+    public void ChangeOwner(PlanetOwner owner)
+    {
+        planetOwner = owner;
+
+        solarSystem.chunk.ChangeEmpireStatus();
+
+    }
+
+    public PlanetOwner GetOwner()
+    {
+        return planetOwner;
     }
 
     void updateResources() {

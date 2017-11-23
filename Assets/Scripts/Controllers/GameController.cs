@@ -32,8 +32,13 @@ public class GameController : MonoBehaviour {
 
             foreach (Empire e in empires)
             {
-                e.SetUp();
+                e.SetUp(galaxy);
             }
         }
 	}
+
+    public Empire GetEmpire(int index)
+    {
+        return empires[index];
+    }
 }

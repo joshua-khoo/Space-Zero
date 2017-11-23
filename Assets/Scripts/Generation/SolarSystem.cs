@@ -22,6 +22,9 @@ public class SolarSystem : MonoBehaviour {
 
 
     public bool generated = false;
+
+    public Chunk chunk;
+
 	// Use this for initialization
 	void Start () {
 
@@ -42,7 +45,7 @@ public class SolarSystem : MonoBehaviour {
         
         for (int i = 0; i < totalPlanets; i++)
         {
-            Planet newPlanet = new Planet(random.Next(int.MinValue, int.MaxValue), itemHolder, false);
+            Planet newPlanet = new Planet(random.Next(int.MinValue, int.MaxValue), itemHolder, false, this);
             newPlanet.position = GetNewPlanetPosition(newPlanet);
             planets.Add(newPlanet);
         }

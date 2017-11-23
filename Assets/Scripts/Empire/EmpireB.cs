@@ -14,9 +14,11 @@ public class EmpireB : Empire {
 		
 	}
 
-    public override void SetUp()
+    public override void SetUp(Galaxy galaxy)
     {
-        SetUp(Color.green, "Green Lazers");
+        SetUp(Color.green, "Green Lazers", galaxy);
+
+        SetOwnedPlanets(new Vector2(galaxy.chunks.GetLength(0), galaxy.chunks.GetLength(1)), Planet.PlanetOwner.EmpireB);
     }
 
 }

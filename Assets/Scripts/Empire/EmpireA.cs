@@ -14,8 +14,13 @@ public class EmpireA : Empire {
 		
 	}
 
-    public override void SetUp()
+    public override void SetUp(Galaxy galaxy)
     {
-        SetUp(Color.red, "red dead");
+        SetUp(Color.red, "red dead", galaxy);
+
+        
+
+        SetOwnedPlanets(new Vector2(0, 0), Planet.PlanetOwner.EmpireA);
+
     }
 }
