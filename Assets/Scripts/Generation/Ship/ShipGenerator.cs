@@ -19,12 +19,16 @@ public class ShipGenerator : MonoBehaviour {
         galaxy = FindObjectOfType<Galaxy>();
         //seed = galaxy.seed;
 
-        seed = 2;
+        seed = 3;
         random = new System.Random(seed);
         GenerateShips();
 
-        Ship newShip = Instantiate(shipPrefab, Vector2.zero, Quaternion.identity);
-        newShip.shipImage = shipImages[0];
+        for (int i = 0; i < shipImages.Count; i++)
+        {
+            Ship newShip = Instantiate(shipPrefab, new Vector3(i * 3, 0, 0), Quaternion.identity);
+            newShip.shipImage = shipImages[i];
+        }
+        
 
     }
 	
@@ -35,14 +39,24 @@ public class ShipGenerator : MonoBehaviour {
 
     void GenerateShips()
     {
-        int width = 100;
-        int height = 200;
-
         
 
+
+        GenerateShip(100, 200);
+        GenerateShip(100, 200);
+        GenerateShip(100, 200);
+        GenerateShip(100, 300);
+        GenerateShip(150, 400);
+
+
+    }
+
+
+    void GenerateShip(int width, int height)
+    {
         int maxSpots = height / 10;
 
-        int spacing = Mathf.RoundToInt(maxSpots * 1.5f);
+        int spacing = Mathf.RoundToInt(maxSpots * 2);
 
         Vector2[] pos = new Vector2[maxSpots];
 
@@ -54,12 +68,12 @@ public class ShipGenerator : MonoBehaviour {
         for (int i = 1; i < (maxSpots / 2) - 1; i++)
         {
             int j = 0;
-            
+
 
             j = random.Next(posY + 1, (spacing) + posY);
 
             posY = j;
-            
+
             print(posY);
             Vector2 p = new Vector2(random.Next(1, (width / 2) - 5), height - posY);
             pos[i] = p;
@@ -69,9 +83,9 @@ public class ShipGenerator : MonoBehaviour {
             pos[maxSpots - i - 1] = p2;
             print(p + "   " + p2);
         }
-        print(((maxSpots / 2) - 1) + "   " + (maxSpots/2));
+        print(((maxSpots / 2) - 1) + "   " + (maxSpots / 2));
         pos[(maxSpots / 2) - 1] = new Vector2(random.Next(1, (width / 2) - 5), 0);
-        pos[maxSpots/2] = new Vector2(width - pos[(maxSpots / 2) - 1].x, 0);
+        pos[maxSpots / 2] = new Vector2(width - pos[(maxSpots / 2) - 1].x, 0);
 
 
 
@@ -89,13 +103,12 @@ public class ShipGenerator : MonoBehaviour {
                 {
                     tex.SetPixel(x, y, new Color(0, 0, 0, 0));
                 }
-                
+
             }
         }
         tex.Apply();
         ShipImage newShipImage = new ShipImage(tex, width, height);
         shipImages.Add(newShipImage);
-
     }
 
     bool IsInside(Vector2[] points, Vector2 pos)

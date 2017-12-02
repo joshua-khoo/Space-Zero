@@ -141,6 +141,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 114997500810944024, guid: 6e6e552e6c12c28448b790768015be04, type: 2}
+  - {fileID: 114288803612158794, guid: 5a2ae9d824a44ed40be6f01bb086ebec, type: 2}
+  - {fileID: 114732551690415258, guid: d76f404c8dd12834480b84e0261b9bae, type: 2}
+  - {fileID: 114209441431074762, guid: 140638fd4dd34864f88f3a76c2a79732, type: 2}
+  - {fileID: 114569407505676988, guid: 5e9e11e8ac9e77349a4411166a3c6237, type: 2}
+  - {fileID: 114044927985619722, guid: 2b6f42ee778976a4eb25ed0b6044e6bb, type: 2}
+  - {fileID: 114836934826833320, guid: e92bcd6754a86764ea76f22241401666, type: 2}
 --- !u!4 &344096432
 Transform:
   m_ObjectHideFlags: 0
