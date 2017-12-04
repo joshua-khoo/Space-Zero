@@ -326,7 +326,36 @@ public class Planet {
 
         for (int i = 0; i < rTotal; i++)
         {
-            Item item = itemHolder.GetItem("Iron Ore");
+            Item item = null;
+            if (random.NextDouble() < 0.3)
+            {
+                item = itemHolder.GetItem("Iron Ore");
+            }
+            else if (random.NextDouble() < 0.3)
+            {
+                item = itemHolder.GetItem("Coal Ore");
+            }
+            else if (random.NextDouble() < 0.3)
+            {
+                item = itemHolder.GetItem("Copper Ore");
+            }
+            else if (random.NextDouble() < 0.3)
+            {
+                item = itemHolder.GetItem("Tree");
+            }
+            else if (random.NextDouble() < 0.3)
+            {
+                item = itemHolder.GetItem("Gold Ore");
+            }
+            else if (random.NextDouble() < 0.3)
+            {
+                item = itemHolder.GetItem("Diamond");
+            }
+            else
+            {
+                item = itemHolder.GetItem("Uranium Ore");
+            }
+
 
             resourcesList.Add(new Resource(GetAmountOfResource(), item));
         }
