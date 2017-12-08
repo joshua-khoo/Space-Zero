@@ -235,6 +235,7 @@
     <Compile Include="Assets\Scripts\Generation\Ship\ShipGenerator.cs" />
     <Compile Include="Assets\Scripts\Generation\Ship\ShipImage.cs" />
     <Compile Include="Assets\Scripts\Generation\SolarSystem.cs" />
+    <Compile Include="Assets\Scripts\MainCamera.cs" />
     <Compile Include="Assets\Scripts\Physics\BasicObject.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsController.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsLine.cs" />
