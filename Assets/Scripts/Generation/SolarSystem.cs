@@ -25,8 +25,10 @@ public class SolarSystem : MonoBehaviour {
 
     public Chunk chunk;
 
-	// Use this for initialization
-	void Start () {
+    public bool loaded = false;
+
+    // Use this for initialization
+    void Start () {
 
         itemHolder = FindObjectOfType<ItemHolder>();
 
@@ -62,7 +64,7 @@ public class SolarSystem : MonoBehaviour {
 
         return rPos + position;
     }
-    bool loaded = false;
+    
     public void FullLoad()
     {
         if (!loaded && generated)
@@ -71,7 +73,7 @@ public class SolarSystem : MonoBehaviour {
             for (int i = 0; i < planets.Count; i++)
             {
 
-                Vector2 pos = position + planets[i].position - new Vector2(planets[i].radius / 2, planets[i].radius / 2);
+                Vector2 pos = planets[i].position - new Vector2(planets[i].radius / 2, planets[i].radius / 2);
 
                 PlanetImage newPlanetImage = Instantiate(planetImagePrefab, pos, Quaternion.identity);
                 newPlanetImage.planet = planets[i];
@@ -83,5 +85,15 @@ public class SolarSystem : MonoBehaviour {
             loaded = true;
         }
         
+    }
+
+    public void Unload()
+    {
+        loaded = false;
+        PlanetImage[] planetImages = GetComponentsInChildren<PlanetImage>();
+        for (int i = 0; i < planetImages.Length; i++)
+        {
+            planetImages[i].Unload();
+        }
     }
 }

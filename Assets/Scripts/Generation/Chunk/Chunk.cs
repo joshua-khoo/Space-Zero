@@ -26,7 +26,7 @@ public class Chunk : MonoBehaviour {
 
         if (chunkType == ChunkType.SolarSystem)
         {
-            solarSystem = Instantiate(solarSystemPrefab);
+            solarSystem = Instantiate(solarSystemPrefab, transform.position, Quaternion.identity);
 
             solarSystem.radius = Galaxy.chunkSize / 2;
 
@@ -87,12 +87,20 @@ public class Chunk : MonoBehaviour {
     
 	// Update is called once per frame
 	void Update () {
-		
+        if (chunkType == ChunkType.SolarSystem && chunkLoadType == ChunkLoadType.full && !solarSystem.loaded)
+        {
+            solarSystem.FullLoad();
+        }
 	}
 
     public void FullLoad()
     {
-        solarSystem.FullLoad();
+        
+        if (chunkType == ChunkType.SolarSystem)
+        {
+            solarSystem.FullLoad();
+        }
+        
     }
     public void SemiLoad()
     {
@@ -107,5 +115,12 @@ public class Chunk : MonoBehaviour {
     public void Unload()
     {
 
+        chunkLoadType = ChunkLoadType.none;
+        print("Unload");
+        if (chunkType == ChunkType.SolarSystem)
+        {
+            
+            solarSystem.Unload();
+        }
     }
 }

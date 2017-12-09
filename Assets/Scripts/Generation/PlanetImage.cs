@@ -57,4 +57,9 @@ public class PlanetImage : MonoBehaviour {
             }
         }
     }
+
+    public void Unload()
+    {
+        Destroy(gameObject);
+    }
 }
